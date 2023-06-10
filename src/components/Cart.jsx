@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import SingleProduct from "./SingleProduct";
-import { Cart } from "../context/Context";
+import { Cart, CartState } from "../context/Context";
 
 const CartPage = () => {
-  const { cart } = useContext(Cart);
+  // const { cart } = useContext(Cart);
+  const { cart } = CartState();
   const [total, setTotal] = useState(0);
 
   useEffect(() => {

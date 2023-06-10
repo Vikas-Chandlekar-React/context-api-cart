@@ -1,10 +1,29 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
+import { faker } from "@faker-js/faker";
 
 export const Cart = createContext();
+faker.seed(100);
 
 const Context = ({ children }) => {
   const [cart, setCart] = useState([]);
-  return <Cart.Provider value={{ cart, setCart }}>{children}</Cart.Provider>;
+  
+  const productsArray = [...Array(20)].map((p) => ({
+    id: faker.datatype.uuid(),
+    name: faker.commerce.productName(),
+    price: faker.commerce.price(),
+    image: faker.image.image(),
+  }));
+
+  const [products, setProducts] = useState(productsArray);
+  return (
+    <Cart.Provider value={{ cart, setCart, products }}>
+      {children}
+    </Cart.Provider>
+  );
+};
+
+export const CartState = () => {
+  return useContext(Cart);
 };
 
 export default Context;

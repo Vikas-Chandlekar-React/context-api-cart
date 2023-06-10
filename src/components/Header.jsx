@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { Cart } from "../context/Context";
+import { Cart, CartState } from "../context/Context";
 
 const Header = () => {
-  const { cart } = useContext(Cart);
+  // const { cart } = useContext(Cart);
+  const { cart } = CartState();
 
   return (
     <div>
