@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import { Cart } from "../context/Context";
 
-const Header = ({ cart }) => {
+const Header = () => {
+  const { cart } = useContext(Cart);
+
   return (
     <div>
       <span className="header">React Context API</span>
       <ul className="nav">
-        <li className="prod">
+        <li>
           <Link to="/">Home</Link>
         </li>
-        <li className="prod1">
+        <li>
           <Link to="/cart">Cart ({cart.length})</Link>
         </li>
       </ul>
